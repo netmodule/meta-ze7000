@@ -6,19 +6,19 @@ BBPATH = "${TOPDIR}"
 BBFILES ?= ""
 
 BBLAYERS ?= " \
-  /home/eichenberger/projects/ze7000/poky/meta \
-  /home/eichenberger/projects/ze7000/poky/meta-yocto \
-  /home/eichenberger/projects/ze7000/poky/meta-yocto-bsp \
-  /home/eichenberger/projects/ze7000/poky/meta-ze7000 \
-  /home/eichenberger/projects/ze7000/poky/meta-netmodule-extras \
-  /home/eichenberger/projects/ze7000/poky/meta-xilinx \
-  /home/eichenberger/projects/ze7000/poky/meta-xilinx-community \
-  /home/eichenberger/projects/ze7000/poky/meta-openembedded/meta-oe \
-  /home/eichenberger/projects/ze7000/poky/meta-openembedded/meta-networking \
-  /home/eichenberger/projects/ze7000/poky/meta-openembedded/meta-filesystems \
+  ##COREBASE##/meta \
+  ##COREBASE##/meta-yocto \
+  ##COREBASE##/meta-yocto-bsp \
+  ##COREBASE##/meta-ze7000 \
+  ##COREBASE##/meta-netmodule-extras \
+  ##COREBASE##/meta-xilinx \
+  ##COREBASE##/meta-xilinx-community \
+  ##COREBASE##/meta-openembedded/meta-oe \
+  ##COREBASE##/meta-openembedded/meta-networking \
+  ##COREBASE##/meta-openembedded/meta-filesystems \
   "
   
 BBLAYERS_NON_REMOVABLE ?= " \
-  /home/eichenberger/projects/ze7000/poky/meta \
-  /home/eichenberger/projects/ze7000/poky/meta-yocto \
+  ##COREBASE##/meta \
+  ##COREBASE##/meta-yocto \
   "
