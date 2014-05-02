@@ -29,6 +29,9 @@ IMAGE_INSTALL_append = "packagegroup-core-boot \
                 python-misc \
                 python-pysnmp \
                 python-construct \
+                lighttpd \
+                ruby \
+                kernel-devicetree \
                 ${ROOTFS_PKGMANAGE_BOOTSTRAP} \
                 ${CORE_IMAGE_EXTRA_INSTALL} \
                 "
@@ -40,4 +43,17 @@ IMAGE_LINGUAS = " "
 LICENSE = "MIT"
 
 inherit core-image
+
+link_devicetree() {
+    ROOTFS=${WORKDIR}/rootfs
+    cd $ROOTFS/boot/
+    devicetreeList=$(find -name "${MACHINE}*.dtb")
+    eval "devicetreeList=($devicetreeList)"
+    bbnote "Found devicetrees: ${devicetreeList[@]}"
+    bbnote "Take: ${devicetreeList[0]}"
+    ln -s ${devicetreeList[0]} devicetree.dtb
+    cd -
+}
+
+IMAGE_PREPROCESS_COMMAND += " link_devicetree "
 

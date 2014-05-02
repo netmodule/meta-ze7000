@@ -16,6 +16,7 @@ BBLAYERS ?= " \
   ##COREBASE##/meta-openembedded/meta-oe \
   ##COREBASE##/meta-openembedded/meta-networking \
   ##COREBASE##/meta-openembedded/meta-filesystems \
+  ##COREBASE##/meta-openembedded/meta-ruby \
   "
   
 BBLAYERS_NON_REMOVABLE ?= " \
