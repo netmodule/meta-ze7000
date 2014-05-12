@@ -1,0 +1,24 @@
+OpenEmbedded/Yocto BSP Layer from NetModule <www.netmodule.com>.
+This layer contains specific receipes/changes to build a ze7000 image. 
+
+It is hosted at http://git.github.org/cgit/cgit.cgi/meta-ze7000/
+
+This layer depends on:
+URI: git://git.yoctoproject.org/poky
+layers: meta, meta-yocto, meta-yocto-bsp
+branch: 1.5
+
+URI: git://git.openembedded.org/meta-openembedded
+layers: meta-oe, meta-networking, meta-filesystems, meta-ruby
+branch: 1.5
+
+The base BSP part of meta-netmodule should work with different 
+OpenEmbedded/Yocto distributions and layer stacks.
+
+Please follow the recommended setup procedures of your OE distribution.
+
+Send pull requests, patches, comments or questions to the maintainers listed
+below.
+
+Maintainers:    David Andrey <david.andrey@netmodule.com> 
+                Stefan Eichenberger <stefan.eichenberger@netmodule.com>
