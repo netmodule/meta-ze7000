@@ -32,6 +32,8 @@ IMAGE_INSTALL_append = "packagegroup-core-boot \
                 lighttpd \
                 ruby \
                 kernel-devicetree \
+                kernel-image \
+                kernel-base \
                 ${ROOTFS_PKGMANAGE_BOOTSTRAP} \
                 ${CORE_IMAGE_EXTRA_INSTALL} \
                 "
