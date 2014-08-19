@@ -6,14 +6,17 @@ It is hosted at http://git.github.org/cgit/cgit.cgi/meta-ze7000/
 This layer depends on:
 URI: git://git.yoctoproject.org/poky
 layers: meta, meta-yocto, meta-yocto-bsp
-branch: 1.5
+branch: 1.6
 
 URI: git://git.openembedded.org/meta-openembedded
 layers: meta-oe, meta-networking, meta-filesystems, meta-ruby
-branch: 1.5
+branch: 1.6
 
-The base BSP part of meta-netmodule should work with different 
-OpenEmbedded/Yocto distributions and layer stacks.
+URI: git://git.yoctoproject.org/meta-xilinx
+branch: master
+
+URI: git://git.yoctoproject.org/meta-xilinx-community
+branch: master
 
 Please follow the recommended setup procedures of your OE distribution.
 
