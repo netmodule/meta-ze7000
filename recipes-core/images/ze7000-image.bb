@@ -37,9 +37,7 @@ IMAGE_INSTALL_append = "packagegroup-core-boot \
                 ${ROOTFS_PKGMANAGE_BOOTSTRAP} \
                 ${CORE_IMAGE_EXTRA_INSTALL} \
                 "
-#IMAGE_INSTALL_append = "tcpdump nano bridge-utils netperf i2c-tools fuse"
-                
-                
+
 IMAGE_LINGUAS = " "
 
 LICENSE = "MIT"
