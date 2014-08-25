@@ -15,7 +15,6 @@ BBLAYERS ?= " \
   ##COREBASE##/meta-xilinx-community \
   ##COREBASE##/meta-openembedded/meta-oe \
   ##COREBASE##/meta-openembedded/meta-networking \
-  ##COREBASE##/meta-openembedded/meta-filesystems \
   ##COREBASE##/meta-openembedded/meta-ruby \
   "
   

@@ -21,7 +21,6 @@ IMAGE_INSTALL_append = "packagegroup-core-boot \
                 bridge-utils \
                 netperf \
                 i2c-tools \
-                fuse \
                 bittwist \
                 phy-access \
                 python-core \
