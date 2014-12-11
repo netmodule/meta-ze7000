@@ -33,6 +33,7 @@ IMAGE_INSTALL_append = "packagegroup-core-boot \
                 kernel-devicetree \
                 kernel-image \
                 kernel-base \
+                smart-config \
                 ${ROOTFS_PKGMANAGE_BOOTSTRAP} \
                 ${CORE_IMAGE_EXTRA_INSTALL} \
                 "

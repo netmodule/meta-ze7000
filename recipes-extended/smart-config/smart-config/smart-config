@@ -1,0 +1,101 @@
+#!/bin/sh
+#
+# Helper script to configure the smart package manager
+
+DEFAULT_CONFIG_FILE="/etc/default/smart_channels"
+
+# Shows some usage information
+function usage()
+{
+  echo -e "$0 [-h | -a | -r]\n"
+  echo "-h        Shows this help"
+  echo "-a [file] Autoconfigure smart channels from configuration file"
+  echo "-r        Remove all configured channel"
+}
+
+# Remove all configured channels
+function remove_all_channels()
+{
+  # "smart channel --remove-all" doesn't work ...
+  for channel in $(smart channel --list | grep -v rpmsys)
+  do
+    echo "Removing smart channel ${channel} ..."
+    smart channel --remove ${channel} -y > /dev/null
+  done
+
+  echo "All smart channels have been removed!"
+}
+
+# Configure channel from configuration file in $1
+function configure_channels()
+{
+  # Make sure we can get a configuration file
+  if [ "$1" != "" ]
+  then
+    config_file=$1
+  else
+    config_file=${DEFAULT_CONFIG_FILE}
+  fi
+
+  if [ ! -e ${config_file} ]
+  then
+    echo "Configuration file ${config_file} doesn't exist"
+    exit -1
+  fi
+
+  # Auto configure smart channels
+  conf_channels=$(smart channel --list | grep -v rpmsys)
+  for channel in $(cat ${config_file} | grep -v ^\#)
+  do
+    # Make sure we have a valid entry
+    [ "${channel}" = "" ] && continue
+    name=$(echo ${channel} | cut -d\; -f1)
+    type=$(echo ${channel} | cut -d\; -f2)
+    url=$(echo ${channel} | cut -d\; -f3)
+
+    if [ "${name}" = "" -o "${type}" = "" -o "${url}" = "" ]
+    then
+      echo "Invalid channel configuration '${channel}', skipping"
+      continue
+    fi
+
+    # Skip already configured channels
+    if [ "$(echo ${conf_channels} | grep ${name})" != "" ]
+    then
+      echo "Channel ${name} already configured, skipping"
+      continue
+    fi
+
+    echo "Adding smart channel ${name} ..."
+    smart channel --add ${name} type=${type} baseurl=${url} -y > /dev/null
+  done
+
+  echo "smart channels configuration done, to start using smart run:"
+  echo "  smart update"
+}
+
+# Make sure that an argument was given
+if [ "${*}" = "" ]
+then
+  echo -e "Please provide at least one arguments:\n"
+  usage
+  exit -1
+fi
+
+# Parses args
+case "$1" in
+-h)
+  usage
+  ;;
+-a)
+  configure_channels $2
+  ;;
+-r)
+  remove_all_channels
+  ;;
+*)
+  echo "Invalid argument $1"
+  usage
+  exit -1
+  ;;
+esac

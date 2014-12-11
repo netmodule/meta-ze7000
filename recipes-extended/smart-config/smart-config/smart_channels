@@ -1,0 +1,8 @@
+# smart channels configuration file for smart-config. Add here a list of remote
+# package repository that can be added in smart with 'smart-config -a'.
+#
+# Configuration example:
+#name;type;url
+#all;rpm-md;http://www.somewhere.com/rpm/all/
+#armv7a_vfp_neon;rpm-md;http://www.somewhere.com/rpm/armv7a_vfp_neon/
+#nice_platform;rpm-md;http://www.somewhere.com/rpm/nice_platform/
