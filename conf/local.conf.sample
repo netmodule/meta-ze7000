@@ -246,4 +246,3 @@ ASSUME_PROVIDED += "libsdl-native"
 # this doesn't mean anything to you.
 CONF_VERSION = "1"
 
-LICENSE_FLAGS_WHITELIST = "non-commercial_netperf"

@@ -19,7 +19,6 @@ IMAGE_INSTALL_append = "packagegroup-core-boot \
                 tcpdump \
                 nano \
                 bridge-utils \
-                netperf \
                 i2c-tools \
                 bittwist \
                 phy-access \
