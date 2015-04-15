@@ -57,3 +57,27 @@ link_devicetree() {
 
 IMAGE_PREPROCESS_COMMAND += " link_devicetree "
 
+# Get variable in local or global env
+def getVar(var, d, origenv):
+    value = origenv.getVar(var, True)
+    if value is None:
+        value = d.getVar(var, True)
+
+    if value is None:
+        bb.warn(var + " is not set, please set it in local.conf or through environment variables")
+
+    return value
+
+# Enhance information in the /etc/version file
+python __anonymous() {
+    origenv = d.getVar("BB_ORIGENV", False)
+    systemVersion = getVar("SYSTEM_VERSION", d, origenv)
+
+    if systemVersion is None:
+        systemVersion = "0.0.0"
+
+    buildName = "\"${PN};" + systemVersion + ";${DATETIME}\""
+    d.setVar("BUILDNAME" , buildName)
+
+}
+
