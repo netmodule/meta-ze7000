@@ -247,8 +247,8 @@ ASSUME_PROVIDED += "libsdl-native"
 CONF_VERSION = "1"
 
 # Enable build history
-INHERIT += "buildhistory"
-BUILDHISTORY_COMMIT = "1"
+# INHERIT += "buildhistory"
+# BUILDHISTORY_COMMIT = "1"
 
 # Mirror GIT repo in download folders
 BB_GENERATE_MIRROR_TARBALLS = "1"
