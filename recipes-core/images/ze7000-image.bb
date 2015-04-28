@@ -81,3 +81,13 @@ python __anonymous() {
 
 }
 
+# Add default repository for package manager
+# For more help on smart, see http://labix.org/smart/howto
+add_custom_smart_config() {
+    smart --data-dir=${IMAGE_ROOTFS}/var/lib/smart channel --add release \
+            type=rpm-md baseurl=http://repository.netmodule.com/ze7000/2015.03/main -y
+}
+
+# Function to run after creation of rootfs
+ROOTFS_POSTPROCESS_COMMAND += "add_custom_smart_config; "
+
