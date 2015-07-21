@@ -47,11 +47,12 @@ inherit core-image
 link_devicetree() {
     ROOTFS=${WORKDIR}/rootfs
     cd $ROOTFS/boot/
-    devicetreeList=$(find -name "${MACHINE}*.dtb")
-    eval "devicetreeList=($devicetreeList)"
-    bbnote "Found devicetrees: ${devicetreeList[@]}"
-    bbnote "Take: ${devicetreeList[0]}"
-    ln -s ${devicetreeList[0]} devicetree.dtb
+    dtb=$(find -name "${MACHINE}.dtb" | head -1)
+    bbnote "Found devicetree: ${dtb}"
+
+    if [ -n ${dtb}  ]; then
+      ln -s ${dtb} devicetree.dtb
+    fi
     cd -
 }
 
